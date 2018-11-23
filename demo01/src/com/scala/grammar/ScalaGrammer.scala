@@ -6,7 +6,7 @@ object ScalaGrammar {
     def main(args: Array[String]): Unit = {
         println("开启Scala学习之旅!")
         // 默认值输出
-        val students = new Students()
+        val students = new Students("李四", 33)
         println(students.name)
     }
 
