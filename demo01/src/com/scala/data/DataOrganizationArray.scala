@@ -29,6 +29,8 @@ object DataOrganizationArray {
         println("源数组中的数据")
         arr.foreach((i: Int) => print(i + " "))
 
+        println()
+        
         println("============================FLATTEN==========================")
 
         /**
