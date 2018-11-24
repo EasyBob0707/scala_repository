@@ -30,7 +30,7 @@ object DataOrganizationArray {
         arr.foreach((i: Int) => print(i + " "))
 
         println()
-        
+
         println("============================FLATTEN==========================")
 
         /**
@@ -49,9 +49,16 @@ object DataOrganizationArray {
         val flattenStr = mapStrs.flatten
         flattenStr.foreach(println(_))
 
-        strs.map(_.split(" ")).flatten
+        strs.map(_.split(" ")).flatten.foreach((y: String) => println(y))
 
-        strs.flatMap(_.split(" "))
+        strs.map((str: String) => str.split(" ")).flatten.foreach(println(_))
+
+        // flatMap表示的含义为：先Map后Flatten, 将两个操作合二为一的操作
+        // 注意： 在连续一系列的操作当中，下划线(_)只能使用一次，因为你在使用的时候
+        // scala已经将推测出下划线(_)的类型，将下划线(_)再次使用会出现类型不匹配的问题
+        strs.flatMap(_.split(" ")).foreach((x: String) => println(x))
+
+        strs.flatMap((str: String) => str.split(" ")).foreach(println(_))
     }
 
 }
