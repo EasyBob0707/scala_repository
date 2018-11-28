@@ -14,6 +14,8 @@ package com.scala.data
   *
   * 方法的调用与java中的调用规则有些差异
   *
+  * List集合
+  *
   * 集合当中常用的方法：
   * 1、map
   * 2、flatten
@@ -42,8 +44,12 @@ package com.scala.data
   * 12、head（取集合中的头部，只有一个值）
   * 13、tail（取集合中的尾部，除了头部其余的都是尾部）
   * 14、length
-  * 15、slice
+  * 15、slice（截取集合，获取子集合）
   * 16、sum
+  *
+  * Set集合
+  *
+  *
   */
 object DataOrganizationCollection {
 
