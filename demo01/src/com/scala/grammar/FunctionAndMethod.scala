@@ -4,6 +4,21 @@ package com.scala.grammar
   * 函数与方法的区别：
   *
   * 方法的定义
+  *
+  * Scala 函数以 def 定义，然后是函数的名称（如 max)，然后是以逗号分隔的参数。
+  * Scala 中变量类型是放在参数和变量的后面，以“：”隔开。
+  * 这种做的一个好处是便与 “type inference”。刚开始有些不习惯（如果你是 Pascal 程序员会觉的很亲切）。
+  * 同样如果函数需要返回值，它的类型也是定义在参数的后面（实际上每个 Scala 函数都有返回值，
+  * 只是有些返回值类型为 Unit，类似为 void 类型）。
+  * 此外每个 Scala 表达式都有返回结果（这一点和 Java，C# 等语言不同），
+  * 比如 Scala 的 if else 语句也是有返回值的，因此函数返回结果无需使用 return 语句。
+  * 实际上在 Scala 代码应当尽量避免使用 return 语句。函数的最后一个表达式的值就可以作为函数的结果作为返回值。
+  * 同样由于 Scala 的 “type inference” 特点，本例其实无需指定返回值的类型。
+  * 对于大多数函数 Scala 都可以推测出函数返回值的类型，但目前来说回溯函数（函数调用自身）还是需要指明返回结果类型的。
+  *
+  * scala中不支持i++或者i--操作  可以用+=或者-=来代替这种类似的操作
+  * scala访问数组的使用“()”而并非使用“[]” ，当然在指定泛型的时候使用“[]”而并非是“<>”(与java类比)
+  *
   * 定义方法的基本格式：
   *
   * def 方法名称(参数列表)： 返回值类型 = 方法体
@@ -60,6 +75,40 @@ object FunctionAndMethod {
         println(noParameter)
         // 调用空参数的函数 返回的是函数
         println(f3)
+        // 循环
+        var i=0
+        while (i < args.length) {
+            println (args(i))
+            i+=1
+        }
+        // 以上的循环可以改写为使用for或者foreach来实现
+        // 用for实现
+        for (x <- args) {
+            println(x)
+        }
+        // 用foreach实现
+        args.foreach(println)
+
+        // 参数化数组(数组指定泛型)
+        // []中指定数组中元素的类型，()指定数组的长度
+        // 用val修饰数组长度是不可变的，但是数组的元素是可变的
+        val greetStr: Array[String] = new Array[String](3)
+        // 以下调用的是apply方法，对数组进行的初始化操作，但是注意并不是new，说明它不是class修饰的
+        val array: Array[String] = Array[String]("hello","world","scala")
+        // 在 Scala 中，数组和其它普遍的类定义一样，没有什么特别之处，当你在某个值后面使用（）时，Scala 将其翻译成对应对象的 apply 方法。
+        // 因此本例中 greetStrings(1) 其实调用 greetString.apply(1) 方法。
+        // 这种表达方法不仅仅只限于数组，对于任何对象，如果在其后面使用（）,都将调用该对象的 apply 方法。
+        // 同样的如果对某个使用（）的对象赋值
+        greetStr(0) = "hello"
+        // 将这种赋值的操作可以转换为update方法
+        // greetStr.update(0,"hello")
+        greetStr(1) = "world"
+        greetStr(2) = "scala"
+        // 如果一个方法只有一个参数，你可以不用括号和.
+        // 来调用这个方法。因此这里的 0 to 2, 其实为（0）.to(2) 调用的为整数类型的 to 方法，to 方法使用一个参数。
+        for (z <- 0 to greetStr.length - 1) {
+            println(greetStr(z))
+        }
     }
 
     // 第一：方法的定义
