@@ -1,4 +1,4 @@
-package com.scala.grammar
+package com.scala.grammar.class_object
 
 /**
   * 类与对象：
